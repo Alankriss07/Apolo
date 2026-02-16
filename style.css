@@ -6,91 +6,110 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: #0f172a;
-  color: #e2e8f0;
+  background: linear-gradient(135deg, #1a0033, #2b0057, #3d0075);
+  color: #f5f5f5;
   overflow-x: hidden;
+  position: relative;
 }
 
-/* Background glow animation */
-.bg-animation {
+/* 🌟 Floating Yellow Hearts */
+body::before {
+  content: "💛 💛 💛 💛 💛 💛 💛 💛 💛 💛 💛 💛";
   position: fixed;
   width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 20% 30%, #1e293b 0%, transparent 50%),
-              radial-gradient(circle at 80% 70%, #1e293b 0%, transparent 50%);
-  z-index: -1;
+  top: -50px;
+  font-size: 22px;
+  animation: fall 12s linear infinite;
+  opacity: 0.8;
+  pointer-events: none;
 }
 
-/* Hero */
+@keyframes fall {
+  0% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(120vh);
+  }
+}
+
+/* Hero Section */
 .hero {
   text-align: center;
-  padding: 100px 20px 60px;
+  padding: 90px 20px 50px;
 }
 
 .hero h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  color: #f8fafc;
-  margin-bottom: 10px;
+  font-size: 2rem;
+  color: #ffd700;
+  letter-spacing: 1px;
 }
 
 .subtitle {
-  color: #94a3b8;
-  font-weight: 300;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #d1c4ff;
 }
 
-/* Sections */
-.message, .goals {
-  width: 90%;
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 30px;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(12px);
+/* Message & Goals Cards */
+.message,
+.goals {
+  width: 92%;
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
   border-radius: 20px;
-  line-height: 1.8;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.1);
+  line-height: 1.7;
+  font-size: 0.95rem;
 }
 
-.message h2 {
-  margin-top: 20px;
-  font-family: 'Playfair Display', serif;
-  color: #facc15;
-}
-
+.message h2,
 .goals h2 {
-  margin-bottom: 20px;
   font-family: 'Playfair Display', serif;
-  color: #facc15;
+  color: #ffd700;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
+/* Goals List */
 .goals ul {
   list-style: none;
 }
 
 .goals li {
   margin-bottom: 15px;
-  padding: 15px;
-  border-left: 3px solid #facc15;
-  background: rgba(255,255,255,0.03);
+  padding: 12px;
+  border-left: 4px solid #ffd700;
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
+  transition: 0.3s ease;
+}
+
+.goals li:hover {
+  transform: translateX(5px);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
 }
 
 /* Gallery */
 .gallery {
+  padding: 50px 15px;
   text-align: center;
-  padding: 60px 20px;
 }
 
 .gallery h2 {
-  margin-bottom: 30px;
   font-family: 'Playfair Display', serif;
-  color: #facc15;
+  color: #ffd700;
+  margin-bottom: 25px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 
 .grid img {
@@ -101,37 +120,36 @@ body {
 }
 
 .grid img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(250,204,21,0.5);
+  transform: scale(1.07);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
 }
 
 /* Footer */
 footer {
   text-align: center;
-  padding: 40px 20px;
-  color: #94a3b8;
+  padding: 30px 20px;
   font-size: 0.9rem;
+  color: #d1c4ff;
 }
 
-/* Fade animation */
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1s ease;
-}
-
-.fade-in.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Mobile Optimization */
+/* 📱 Mobile Optimisation */
 @media (max-width: 600px) {
-  .hero h1 {
-    font-size: 1.8rem;
+
+  .hero {
+    padding: 70px 15px 40px;
   }
 
-  .message, .goals {
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .message,
+  .goals {
     padding: 20px;
+    font-size: 0.9rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
