@@ -1,9 +1,11 @@
-console.log("For my love ❤️");
+const elements = document.querySelectorAll(".fade-in");
 
-document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("img").forEach(img => {
-        img.addEventListener("click", () => {
-            img.classList.toggle("zoom");
-        });
-    });
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
 });
+
+elements.forEach(el => observer.observe(el));
